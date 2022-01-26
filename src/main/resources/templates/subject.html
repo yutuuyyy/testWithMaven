@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form name="TopicSubjectsDTOForm" enctype="multipart/form-data" method="post">
+    <input type="file" id="impFilename" webkitdirectory name="impFilename" multiple="multiple"  onchange="if(this.value)importExcel(this.value);" />
+    <script type="text/javascript" th:inline="javascript">
+
+        function importExcel(tValue) {
+            // var excelfiles = '';
+            // if (tValue != '') {
+            //     var len = tValue.length;
+            //     var str = tValue.substr(tValue.lastIndexOf("."), len);
+            //     if (str == '.xls' || str == '.XLS' || str == '.xlsx' || str == '.XLSX') {
+            //         swal({
+            //             title: "导入",
+            //             text: "确定导入当前Excel吗！",
+            //             type: "warning",
+            //             showCancelButton: true,
+            //             confirmButtonColor: "#1ab394",
+            //             confirmButtonText: "导入",
+            //             closeOnConfirm: true
+            //         }, function () {
+            //             $("body").mLoading({
+            //                 text: "正在导入，请勿刷新.."
+            //             });
+            //             document.TopicSubjectsDTOForm.action = "/sys/topicSubjects/toImport";
+            //             document.TopicSubjectsDTOForm.submit();
+            //         });
+            //     } else {
+            //         toastr.error("请选择Excel文件进行上传");
+            //         return false;
+            //     }
+            // }
+            document.TopicSubjectsDTOForm.action = "/toImport";
+            document.TopicSubjectsDTOForm.submit();
+        }
+    </script>
+</form>
+</body>
+</html>

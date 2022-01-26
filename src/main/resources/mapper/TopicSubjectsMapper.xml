@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.TopicSubjectsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.test.entity.TopicSubjectsDTO">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="grade_id" property="gradeId" jdbcType="INTEGER"/>
+        <result column="subjects_dict_id" property="subjectsDictId" jdbcType="INTEGER"/>
+        <result column="subjects" property="subjects" jdbcType="VARCHAR"/>
+        <result column="cover" property="cover" jdbcType="VARCHAR"/>
+        <result column="sorts" property="sorts" jdbcType="INTEGER"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, grade_id, subjects_dict_id, subjects, cover, sorts, gmt_create, gmt_modified
+    </sql>
+
+</mapper>

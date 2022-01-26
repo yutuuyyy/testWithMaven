@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.TopicCatalogueMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.test.entity.TopicCatalogueDTO">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="subjects_id" property="subjectsId" jdbcType="INTEGER"/>
+        <result column="catalogue_id" property="catalogueId" jdbcType="INTEGER"/>
+        <result column="catalogue" property="catalogue" jdbcType="VARCHAR"/>
+        <result column="catalogue_level" property="catalogueLevel" jdbcType="INTEGER"/>
+        <result column="sorts" property="sorts" jdbcType="INTEGER"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, subjects_id, catalogue_id, catalogue, catalogue_level, sorts, gmt_create, gmt_modified
+    </sql>
+
+</mapper>

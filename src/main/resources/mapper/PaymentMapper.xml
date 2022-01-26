@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mapper.PaymentMapper">
+
+    <resultMap id="BaseResultMap" type="com.test.entity.Payment">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <id column="serial" property="serial" jdbcType="VARCHAR" />
+        <id column="json_test" property="jsonTest" jdbcType="VARCHAR" javaType="java.lang.Integer" typeHandler="com.test.mapper.parseHandler.JsonArrayHandler"/>
+    </resultMap>
+
+
+
+    <select id="getPaymentById" parameterType="integer" resultMap="BaseResultMap">
+        SELECT * FROM payment WHERE id = #{id};
+    </select>
+
+    <select id="getPayments" parameterType="integer" resultMap="BaseResultMap">
+        SELECT
+            *
+        FROM
+            payment
+        WHERE
+            JSON_CONTAINS(json_test->"$", '[${option}]');
+    </select>
+
+    <select id="getPaymentsByList" resultMap="BaseResultMap">
+        SELECT
+            *
+        FROM
+            payment
+        <where>
+            <if test="t.size() != 0">
+                JSON_CONTAINS(json_test->"$",
+                <foreach collection="t" item="item" open="'[" close="]'" separator="," index="index">
+                    ${item}
+                </foreach>
+                )
+            </if>
+            <if test="id != null">AND id = #{id}</if>
+        </where>
+    </select>
+</mapper>

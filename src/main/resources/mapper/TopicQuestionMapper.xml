@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.TopicQuestionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.test.entity.TopicQuestionDTO">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="catalogue_id" property="catalogueId" jdbcType="INTEGER"/>
+        <result column="topic" property="topic" jdbcType="VARCHAR"/>
+        <result column="answer_mark" property="answerMark" jdbcType="VARCHAR"/>
+        <result column="answer_analysis" property="answerAnalysis" jdbcType="VARCHAR"/>
+        <result column="topic_type" property="topicType" jdbcType="VARCHAR"/>
+        <result column="topic_type_code" property="topicTypeCode" jdbcType="INTEGER"/>
+        <result column="difficulty" property="difficulty" jdbcType="VARCHAR"/>
+        <result column="difficulty_code" property="difficultyCode" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+        <result column="pages" property="pages" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, catalogue_id, topic, answer_mark, answer_analysis, topic_type, topic_type_code, difficulty, difficulty_code, gmt_create, gmt_modified
+    </sql>
+
+    <insert id="insertTopicQuestion" parameterType="com.test.entity.TopicQuestionDTO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+                topic_question
+        (catalogue_id, topic, answer_mark, answer_analysis, topic_type, topic_type_code, difficulty, difficulty_code, page)
+        VALUES
+        (#{t.catalogueId},#{t.topic},#{t.answerMark},#{t.answerAnalysis},#{t.topicType},#{t.topicTypeCode},#{t.difficulty},#{t.difficultyCode},#{t.page})
+    </insert>
+</mapper>
